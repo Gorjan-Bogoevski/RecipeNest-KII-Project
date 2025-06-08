@@ -16,12 +16,12 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from django.views.generic import TemplateView  # ✅ додади го ова
+from django.views.generic import TemplateView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('recipes.urls')),
-    path('index/', TemplateView.as_view(template_name="index.html")),  # ✅ ова е ок
+    path('index/', TemplateView.as_view(template_name="index.html")),
     path('add/', TemplateView.as_view(template_name="add_recipe.html")),
 path('details/', TemplateView.as_view(template_name="recipe_detail.html")),
 ]
