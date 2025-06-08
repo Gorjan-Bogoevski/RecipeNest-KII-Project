@@ -1,3 +1,3 @@
 # RecipeNest-KII-Project
-KII-Proect-
+KII-Proekt-
 Sistem za prikazuvanje i dodavanje na recepti za hrana
