@@ -7,7 +7,7 @@
 </head>
 <body class="bg-light">
 <div class="container py-5">
-    <a href="/index/" class="btn btn-outline-secondary mb-4">&larr; Back</a>
+    <a href="/index.html" class="btn btn-outline-secondary mb-4">&larr; Back</a>
     <div id="recipe" class="card p-4 shadow-sm bg-white"></div>
 </div>
 
@@ -16,7 +16,7 @@
     const params = new URLSearchParams(window.location.search);
     const recipeId = params.get("id");
 
-    fetch(`/api/recipes/${recipeId}/`)
+    fetch(`http://localhost:8000/api/recipes/${recipeId}/`)
         .then(res => res.json())
         .then(data => {
             document.getElementById("recipe").innerHTML = `

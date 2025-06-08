@@ -28,7 +28,7 @@
             <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="logo" width="40" height="40">
             <span class="brand">RecipeNest</span>
         </div>
-        <a href="/index/" class="btn btn-outline-secondary">← Back</a>
+        <a href="/index.html" class="btn btn-outline-secondary">← Back</a>
     </div>
 
     <div class="form-card mx-auto" style="max-width: 600px;">
@@ -77,13 +77,13 @@ document.getElementById('recipeForm').addEventListener('submit', function (e) {
         image_url: form.image_url.value
     };
 
-    fetch("/api/recipes/", {
+    fetch("http://localhost:8000/api/recipes/", {
         method: "POST",
         headers: {"Content-Type": "application/json"},
         body: JSON.stringify(data)
     }).then(res => {
         if (res.ok) {
-            window.location.href = "/index/";
+            window.location.href = "/index.html";
         } else {
             alert("Failed to create recipe");
         }

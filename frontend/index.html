@@ -66,7 +66,7 @@
       <img src="https://cdn-icons-png.flaticon.com/512/1046/1046784.png" alt="logo" width="40" height="40">
       <span class="brand">RecipeNest</span>
     </div>
-    <a href="/add/" class="btn add-btn px-4">+ Add Recipe</a>
+  <a href="/add_recipe.html" class="btn add-btn px-4 ">Add Recipe</a>
   </div>
 
   <!-- Recipe list -->
@@ -76,7 +76,7 @@
 <script>
   const recipeList = document.getElementById("recipe-list");
 
-  fetch("/api/recipes/")
+  fetch("http://localhost:8000/api/recipes/")
     .then(res => res.json())
     .then(data => {
       if (data.length === 0) {
