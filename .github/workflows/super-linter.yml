@@ -2,6 +2,10 @@ name: Lint and Docker Build
 
 on:
   push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+    
 jobs:
   run-lint:
     runs-on: ubuntu-latest
@@ -9,6 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
         with:
+        
           fetch-depth: 0
 
       - name: Lint Code Base
@@ -20,7 +25,7 @@ jobs:
 
   docker:
     runs-on: ubuntu-latest
-    needs: run-lint  # optional: only run docker build if lint passes
+    needs: run-lint 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
