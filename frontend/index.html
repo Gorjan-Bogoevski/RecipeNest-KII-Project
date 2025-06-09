@@ -72,11 +72,12 @@
   <!-- Recipe list -->
   <div id="recipe-list"></div>
 </div>
+<script src="config.js"></script>
 
 <script>
   const recipeList = document.getElementById("recipe-list");
 
-  fetch("http://localhost:8000/api/recipes/")
+  fetch(`${API_BASE_URL}/api/recipes/`)
     .then(res => res.json())
     .then(data => {
       if (data.length === 0) {
