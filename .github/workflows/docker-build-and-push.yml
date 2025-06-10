@@ -109,6 +109,11 @@ jobs:
         run: |
           sed "s|__API_URL__|http://${{ needs.aws_instance_prep.outputs.public_ip }}:8000|g" frontend/config.template.js > frontend/config.js
 
+      - name: Create frontend directory on EC2
+        run: |
+          ssh -i ec2_key.pem -o StrictHostKeyChecking=no ec2-user@${{ needs.aws_instance_prep.outputs.public_ip }} << 'EOF'
+          mkdir -p /home/ec2-user/frontend
+          EOF
       - name: Copy docker-compose.yml and frontend config.js to EC2
         run: |
           scp -i ec2_key.pem -o StrictHostKeyChecking=no docker-compose.yml ec2-user@${{ needs.aws_instance_prep.outputs.public_ip }}:/home/ec2-user/docker-compose.yml
