@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cee3ee89-596f-4eca-83ab-1654dfc223f4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/frontend/edit_recipe.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/recipenest/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/recipenest/settings.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/recipenest/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/recipenest/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/recipes/serializers.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/recipes/serializers.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/recipes/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/recipes/urls.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/backend/recipes/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/backend/recipes/views.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/config.js" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/frontend/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/frontend/index.html" afterDir="false" />
-    </list>
+    <list default="true" id="cee3ee89-596f-4eca-83ab-1654dfc223f4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -147,7 +137,7 @@
       <updated>1749389415095</updated>
       <workItem from="1749389420708" duration="25390000" />
       <workItem from="1749547609145" duration="91000" />
-      <workItem from="1749547707373" duration="726000" />
+      <workItem from="1749547707373" duration="1148000" />
     </task>
     <servers />
   </component>
