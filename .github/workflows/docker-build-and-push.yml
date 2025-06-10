@@ -108,6 +108,7 @@ jobs:
       - name: Generate frontend config.js with EC2 IP
         run: |
           sed "s|__API_URL__|http://${{ needs.aws_instance_prep.outputs.public_ip }}:8000|g" frontend/config.template.js > frontend/config.js
+          working-directory: ./frontend
 
       - name: Create frontend directory on EC2
         run: |
