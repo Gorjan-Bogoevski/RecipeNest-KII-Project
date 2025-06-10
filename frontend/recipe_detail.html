@@ -10,13 +10,13 @@
     <a href="/index.html" class="btn btn-outline-secondary mb-4">&larr; Back</a>
     <div id="recipe" class="card p-4 shadow-sm bg-white"></div>
 </div>
-<script src="config.js"></script>
 
+<script src="/config.js"></script>
 <script>
     // земи ID од URL (пример: /details/?id=123)
     const params = new URLSearchParams(window.location.search);
     const recipeId = params.get("id");
-
+    console.log(API_BASE_URL);
    fetch(`${API_BASE_URL}/api/recipes/${recipeId}/`)
         .then(res => res.json())
         .then(data => {
