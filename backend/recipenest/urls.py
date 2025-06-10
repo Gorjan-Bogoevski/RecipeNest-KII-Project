@@ -21,7 +21,8 @@ from django.views.generic import TemplateView
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('recipes.urls')),
-    path('index/', TemplateView.as_view(template_name="index.html")),
-    path('add/', TemplateView.as_view(template_name="add_recipe.html")),
-path('details/', TemplateView.as_view(template_name="recipe_detail.html")),
+    path('index/', TemplateView.as_view(template_name='index.html')),
+    path('add/', TemplateView.as_view(template_name='add_recipe.html')),
+    path('details/', TemplateView.as_view(template_name='recipe_detail.html')),
+    path('edit/', TemplateView.as_view(template_name='edit_recipe.html')),
 ]

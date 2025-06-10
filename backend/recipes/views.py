@@ -1,47 +1,38 @@
+from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from rest_framework.views import APIView
 from .models import Recipe
-from bson.errors import InvalidId
-
-from bson import ObjectId
-
+from .serializers import RecipeSerializer
+from django.shortcuts import get_object_or_404
 
 class RecipeListCreateView(APIView):
     def get(self, request):
         recipes = Recipe.objects.all()
-        recipe_list = []
-        for r in recipes:
-            doc = r.to_mongo().to_dict()
-            doc["_id"] = str(doc["_id"])
-            recipe_list.append(doc)
-        return Response(recipe_list)
+        serializer = RecipeSerializer(recipes, many=True)
+        return Response(serializer.data)
 
     def post(self, request):
-        try:
-            data = request.data
-            print(" Incoming data:", data)
-
-            recipe = Recipe(
-                title=data["title"],
-                cook_time=int(data["cook_time"]),
-                ingredients=data.get("ingredients", []),
-                steps=data.get("steps", []),
-                tags=data.get("tags", []),
-                image_url=data.get("image_url", "")
-            )
-            recipe.save()
-            return Response({"message": "Recipe created"}, status=status.HTTP_201_CREATED)
-        except Exception as e:
-            print("Error:", str(e))
-            return Response({"error": str(e)}, status=status.HTTP_400_BAD_REQUEST)
+        serializer = RecipeSerializer(data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data, status=status.HTTP_201_CREATED)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 class RecipeDetailView(APIView):
-    def get(self, request, recipe_id):
-        try:
-            recipe = Recipe.objects.get(id=ObjectId(recipe_id))
-            data = recipe.to_mongo().to_dict()
-            data["_id"] = str(data["_id"])
-            return Response(data)
-        except (Recipe.DoesNotExist, InvalidId):
-            return Response({"error": "Recipe not found"}, status=404)
+    def get(self, request, pk):
+        recipe = get_object_or_404(Recipe, pk=pk)
+        serializer = RecipeSerializer(recipe)
+        return Response(serializer.data)
+
+    def put(self, request, pk):
+        recipe = get_object_or_404(Recipe, pk=pk)
+        serializer = RecipeSerializer(recipe, data=request.data)
+        if serializer.is_valid():
+            serializer.save()
+            return Response(serializer.data)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+    def delete(self, request, pk):
+        recipe = get_object_or_404(Recipe, pk=pk)
+        recipe.delete()
+        return Response(status=status.HTTP_204_NO_CONTENT)

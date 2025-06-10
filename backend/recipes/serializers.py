@@ -18,3 +18,4 @@ class RecipeSerializer(serializers.Serializer):
             setattr(instance, key, value)
         instance.save()
         return instance
+
