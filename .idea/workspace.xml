@@ -5,7 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="cee3ee89-596f-4eca-83ab-1654dfc223f4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/frontend/config.template.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +21,7 @@
         <option value="Python Script" />
         <option value="Dockerfile" />
         <option value="HTML File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -145,7 +146,7 @@
       <updated>1749389415095</updated>
       <workItem from="1749389420708" duration="25390000" />
       <workItem from="1749547609145" duration="91000" />
-      <workItem from="1749547707373" duration="13351000" />
+      <workItem from="1749547707373" duration="13917000" />
     </task>
     <servers />
   </component>
