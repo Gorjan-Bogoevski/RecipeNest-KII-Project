@@ -93,7 +93,6 @@ jobs:
         id: set_env
         run: echo "instance_id=${{ env.INSTANCE_ID }}" >> $GITHUB_OUTPUT
 
-
   deploy:
     runs-on: ubuntu-latest
     needs: [docker, aws_instance_prep]
@@ -106,9 +105,14 @@ jobs:
           echo "${{ secrets.EC2_SSH_PRIVATE_KEY }}" > ec2_key.pem
           chmod 600 ec2_key.pem
 
-      - name: Copy docker-compose.yml to EC2
+      - name: Generate frontend config.js with EC2 IP
+        run: |
+          sed "s|__API_URL__|http://${{ needs.aws_instance_prep.outputs.public_ip }}:8000|g" frontend/config.template.js > frontend/config.js
+
+      - name: Copy docker-compose.yml and frontend config.js to EC2
         run: |
           scp -i ec2_key.pem -o StrictHostKeyChecking=no docker-compose.yml ec2-user@${{ needs.aws_instance_prep.outputs.public_ip }}:/home/ec2-user/docker-compose.yml
+          scp -i ec2_key.pem -o StrictHostKeyChecking=no frontend/config.js ec2-user@${{ needs.aws_instance_prep.outputs.public_ip }}:/home/ec2-user/frontend/config.js
 
       - name: Deploy with docker-compose
         run: |
