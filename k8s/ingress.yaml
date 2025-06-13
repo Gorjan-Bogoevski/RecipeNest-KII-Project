@@ -1,0 +1,33 @@
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: frontend-route
+  namespace: recipes
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`recipe.localhost`) && PathPrefix(`/`)
+      kind: Rule
+      services:
+        - name: frontend
+          port: 80
+
+---
+
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: backend-route
+  namespace: recipes
+spec:
+  entryPoints:
+    - web
+  routes:
+    - match: Host(`recipe.localhost`) && PathPrefix(`/api/recipes`)
+      kind: Rule
+      services:
+        - name: backend
+          port: 8000

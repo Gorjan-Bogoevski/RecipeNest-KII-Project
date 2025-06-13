@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: frontend-config
+  namespace: recipes
+data:
+  config.js: |
+    const API_BASE_URL = "";
