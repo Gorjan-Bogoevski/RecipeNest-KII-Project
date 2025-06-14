@@ -17,11 +17,11 @@ metadata:
   name: mongo
   namespace: recipes
 spec:
+  serviceName: "mongo"
+  replicas: 3
   selector:
     matchLabels:
       app: mongo
-  serviceName: "mongo"
-  replicas: 3
   template:
     metadata:
       labels:
@@ -33,13 +33,13 @@ spec:
           ports:
             - containerPort: 27017
           env:
-#            - name: MONGO_INITDB_ROOT_USERNAME
-#              valueFrom:
-#                secretKeyRef:
-#                  name: recipes-secret
-#                  key: MONGO_INITDB_ROOT_USERNAME
-#            - name: MONGO_INITDB_ROOT_PASSWORD
-#              valueFrom:
-#                secretKeyRef:
-#                  name: recipes-secret
-#                  key: MONGO_INITDB_ROOT_PASSWORD
+            - name: MONGO_INITDB_ROOT_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: recipes-secret
+                  key: MONGO_INITDB_ROOT_USERNAME
+            - name: MONGO_INITDB_ROOT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: recipes-secret
+                  key: MONGO_INITDB_ROOT_PASSWORD
