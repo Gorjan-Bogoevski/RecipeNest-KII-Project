@@ -11,17 +11,18 @@ spec:
     app: mongo
 
 ---
+
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
   name: mongo
   namespace: recipes
 spec:
-  serviceName: "mongo"
-  replicas: 3
   selector:
     matchLabels:
       app: mongo
+  serviceName: mongo
+  replicas: 1
   template:
     metadata:
       labels:
@@ -29,9 +30,10 @@ spec:
     spec:
       containers:
         - name: mongo
-          image: mongo
+          image: mongo:5.0
           ports:
             - containerPort: 27017
+              name: mongo
           env:
             - name: MONGO_INITDB_ROOT_USERNAME
               valueFrom:
@@ -43,3 +45,15 @@ spec:
                 secretKeyRef:
                   name: recipes-secret
                   key: MONGO_INITDB_ROOT_PASSWORD
+          volumeMounts:
+            - name: mongo-storage
+              mountPath: /data/db
+  volumeClaimTemplates:
+    - metadata:
+        name: mongo-storage
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        storageClassName: local-path
+        resources:
+          requests:
+            storage: 1Gi
