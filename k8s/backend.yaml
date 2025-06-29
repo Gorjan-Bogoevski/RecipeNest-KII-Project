@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: backend
-          image: gorjanbogoevski/recipenest-backend-k8s:v2
+          image: gorjanbogoevski/recipenest-backend-k8s:v3
           ports:
             - containerPort: 8000
           env:
@@ -44,7 +44,7 @@ spec:
                   name: recipes-secret
                   key: MONGO_INITDB_ROOT_PASSWORD
             - name: MONGO_URI
-              value: mongodb://mongo-0.mongo.recipes.svc.cluster.local:27017,mongo-1.mongo.recipes.svc.cluster.local:27017/?replicaSet=rs0&authSource=admin
+              value: mongodb://root:12345@mongo-0.mongo.recipes.svc.cluster.local:27017,mongo-1.mongo.recipes.svc.cluster.local:27017/?replicaSet=rs0&readPreference=primaryPreferred&retryWrites=true&w=majority
 
 
 ---
