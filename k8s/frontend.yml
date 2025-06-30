@@ -23,7 +23,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: gorjanbogoevski/recipenest-frontend-k8s:latest
+          image: gorjanbogoevski/recipenest-frontend-k8s:v1
           ports:
             - containerPort: 80
           volumeMounts:
