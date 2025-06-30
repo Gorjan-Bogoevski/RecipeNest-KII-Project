@@ -79,7 +79,7 @@ jobs:
           context: ./backend
           file: ./backend/Dockerfile
           push: true
-          tags: gorjanbogoevski/recipenest-backend:latest
+          tags: gorjanbogoevski/recipenest-backend:v1
 
       - name: Build & Push Frontend Image
         uses: docker/build-push-action@v6
@@ -87,7 +87,7 @@ jobs:
           context: ./frontend
           file: ./frontend/Dockerfile
           push: true
-          tags: gorjanbogoevski/recipenest-frontend:latest
+          tags: gorjanbogoevski/recipenest-frontend:v1
 
   deploy:
     runs-on: ubuntu-latest
