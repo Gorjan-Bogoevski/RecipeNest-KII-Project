@@ -1,27 +1,3 @@
-# version: '3.8'
-
-# services:
-#   backend:
-#     image: gorjanbogoevski/recipenest-backend:latest
-#     ports:
-#       - "8000:8000"
-#     depends_on:
-#       - mongo
-#     environment:
-#       - PYTHONUNBUFFERED=1
-
-#   frontend:
-#     image: gorjanbogoevski/recipenest-frontend:latest
-#     ports:
-#       - "8080:80"
-#     depends_on:
-#       - backend
-
-#   mongo:
-#     image: mongo
-#     container_name: mongo
-#     ports:
-#       - "27017:27017"
 version: '3.8'
 
 services:
@@ -35,7 +11,7 @@ services:
       - mongo_data:/data/db
 
   backend:
-    image: gorjanbogoevski/recipenest-backend:latest
+    image: gorjanbogoevski/recipenest-backend:v1
     ports:
       - "8000:8000"
     depends_on:
@@ -45,7 +21,7 @@ services:
     restart: always
 
   frontend:
-    image: gorjanbogoevski/recipenest-frontend:latest
+    image: gorjanbogoevski/recipenest-frontend:v1
     ports:
       - "8080:80"
     depends_on:
